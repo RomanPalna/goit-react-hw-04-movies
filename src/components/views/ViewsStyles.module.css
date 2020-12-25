@@ -1,0 +1,61 @@
+.galery__item {
+  display: flex;
+  border: 2px solid #ff6b08;
+  border-radius: 5px;
+  border-color: transparent;
+  overflow: hidden;
+  transition: box-shadow 250ms, transform 250ms, border-color 250ms;
+
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.galery__item:hover,
+.galery__item:focus {
+  transform: scale(1.1);
+  border-color: #ff6b08;
+  box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.16), 0px 4px 4px rgba(0, 0, 0, 0.06),
+    0px 1px 1px rgba(0, 0, 0, 0.12);
+}
+
+.card__title {
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.3;
+  width: min-content;
+}
+
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px 20px 40px 20px;
+}
+
+ul {
+  list-style: none;
+}
+
+.loadMore {
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  padding: 0.5em 2em;
+  outline: none;
+  margin-bottom: 40px;
+  border-width: 2px 0;
+  border-style: solid none;
+  border-color: #fdbe33 #000 #d77206;
+  border-radius: 6px;
+  background: linear-gradient(#f3ae0f, #e38916) #e38916;
+  transition: 0.2s;
+}
+.loadMore:hover {
+  background: linear-gradient(#f5ae00, #f59500) #f5ae00;
+}
+.loadMore:active {
+  background: linear-gradient(#f59500, #f5ae00) #f59500;
+}
