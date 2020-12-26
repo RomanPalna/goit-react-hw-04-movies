@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import filmApi from '../../FilmAPI/FilmApi';
+import fetchFilm from '../../FilmAPI/trendFilmApi';
 import s from './ViewsStyles.module.css';
 
 export default function HomePage() {
@@ -8,7 +8,7 @@ export default function HomePage() {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    filmApi(page).then(film => setFilms([...films, ...film.results]));
+    fetchFilm(page).then(film => setFilms([...films, ...film.results]));
   }, [page]);
 
   const loadMore = () => setPage(prevState => prevState + 1);

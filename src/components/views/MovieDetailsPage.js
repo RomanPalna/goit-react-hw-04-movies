@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import filmApi from '../../FilmAPI/FilmApi';
+import fatchFilmDetail from '../../FilmAPI/filmDetailApi';
 
 export default function MovieDetailsPage() {
   const [film, setFilm] = useState(null);
@@ -8,8 +8,24 @@ export default function MovieDetailsPage() {
   const { filmId } = useParams();
 
   useEffect(() => {
-    filmApi(filmId).then(setFilm);
+    fatchFilmDetail(filmId).then(setFilm);
   }, [filmId]);
 
-  return <h1>{`Тут має бути фільм ${filmId}`}</h1>;
+  console.log(film);
+
+  return (
+    <div>
+      <img
+        alt={film.title}
+        src={`https://image.tmdb.org/t/p/w400${film.poster_path}`}
+      ></img>
+      <div>
+        <h1>{film.title}</h1>
+
+        <p>Vote Average: {film.vote_average} / 10</p>
+        <h2>Overview</h2>
+        <p>{film.overview}</p>
+      </div>
+    </div>
+  );
 }
