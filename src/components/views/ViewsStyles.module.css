@@ -75,3 +75,18 @@ ul {
 .detailsImg {
   margin-right: 40px;
 }
+
+.navLink {
+  border: 1px solid black;
+  padding: 20px;
+}
+
+.creditsPage {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.creditItem {
+  margin: 10px;
+  border: 1px solid black;
+}
