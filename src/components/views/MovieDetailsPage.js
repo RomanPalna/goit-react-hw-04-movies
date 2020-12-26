@@ -3,6 +3,7 @@ import { useParams, Route, NavLink, useRouteMatch } from 'react-router-dom';
 import fatchFilmDetail from '../../FilmAPI/filmDetailApi';
 import Loader from './loader';
 import Cast from './Cast';
+import Reviews from './Reviews';
 import s from './ViewsStyles.module.css';
 
 export default function MovieDetailsPage() {
@@ -54,6 +55,10 @@ export default function MovieDetailsPage() {
 
       <Route path="/movies/:filmId/cast">
         <Cast />
+      </Route>
+
+      <Route path="/movies/:filmId/reviews">
+        <Reviews />
       </Route>
     </>
   ) : (
