@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import fetchMovieDetails from '../../FilmAPI/filmRewievsApi';
 import Loader from './loader';
-import noReview from '../../images/noReview.jpg';
-import s from './ViewsStyles.module.css';
+// import noReview from '../../images/noReview.jpg';
+// import s from './ViewsStyles.module.css';
 
 export default function Reviews() {
   const [rewievs, setRewievs] = useState(null);
