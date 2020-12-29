@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import fetchMovieCredits from '../../FilmAPI/filmCreditsApi';
-import Loader from './loader';
+import Spinner from './loader';
 import imgNotFound from '../../images/notFound.jpg';
 import s from './ViewsStyles.module.css';
 
@@ -32,6 +32,6 @@ export default function Cast() {
       ))}
     </ul>
   ) : (
-    <Loader />
+    <Spinner />
   );
 }

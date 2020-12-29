@@ -1,7 +1,7 @@
 [build]
-pablish = "build"
+publish = "build"
 
 [[redirects]]
-from ="/*"
-to = "/index.html"
+from = "/*"
 status = 200
+to = "/index.html"

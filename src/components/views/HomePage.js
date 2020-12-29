@@ -1,16 +1,23 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import fetchFilm from '../../FilmAPI/trendFilmApi';
+import Spinner from './loader';
 import s from './ViewsStyles.module.css';
 
 export default function HomePage() {
   const [films, setFilms] = useState([]);
   const [page, setPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    fetchFilm(page).then(film => setFilms([...films, ...film.results]));
+    setIsLoading(true);
+
+    fetchFilm(page)
+      .then(film => setFilms([...films, ...film.results]))
+      .finally(setIsLoading(false));
   }, [page]);
 
+  console.log(isLoading);
   const loadMore = () => setPage(prevState => prevState + 1);
 
   return (

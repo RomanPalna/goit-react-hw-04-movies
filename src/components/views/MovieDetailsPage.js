@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, Route, NavLink, useRouteMatch } from 'react-router-dom';
 import fatchFilmDetail from '../../FilmAPI/filmDetailApi';
-import Loader from './loader';
+import Spinner from './loader';
 import Cast from './Cast';
 import Reviews from './Reviews';
 import s from './ViewsStyles.module.css';
@@ -62,6 +62,6 @@ export default function MovieDetailsPage() {
       </Route>
     </>
   ) : (
-    <Loader />
+    <Spinner />
   );
 }

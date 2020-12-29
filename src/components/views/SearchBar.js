@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Searchbar({ onSubmit }) {
   const [query, setQuery] = useState('');
@@ -12,7 +14,7 @@ export default function Searchbar({ onSubmit }) {
     e.preventDefault();
 
     if (!query) {
-      return;
+      return toast.warning('Ей! Впиши что-то в строку поиска!');
     }
 
     onSubmit(query);
