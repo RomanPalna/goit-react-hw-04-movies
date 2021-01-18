@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import fetchFilm from '../../FilmAPI/trendFilmApi';
-import Spinner from './loader';
+
 import s from './ViewsStyles.module.css';
 
 export default function HomePage() {
@@ -17,7 +17,6 @@ export default function HomePage() {
       .finally(setIsLoading(false));
   }, [page]);
 
-  console.log(isLoading);
   const loadMore = () => setPage(prevState => prevState + 1);
 
   return (

@@ -1,10 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { useParams, Route, NavLink, useRouteMatch } from 'react-router-dom';
 import fatchFilmDetail from '../../FilmAPI/filmDetailApi';
 import Spinner from './loader';
-import Cast from './Cast';
-import Reviews from './Reviews';
 import s from './ViewsStyles.module.css';
+
+const Cast = lazy(() => import('./Cast.js' /* webpackChunkName: "cast" */));
+const Reviews = lazy(() =>
+  import('./Reviews.js' /* webpackChunkName: "reviews" */),
+);
 
 export default function MovieDetailsPage() {
   const [film, setFilm] = useState(null);
@@ -53,13 +56,15 @@ export default function MovieDetailsPage() {
         </li>
       </ul>
 
-      <Route path="/movies/:filmId/cast">
-        <Cast />
-      </Route>
+      <Suspense fallback={<Spinner />}>
+        <Route path="/movies/:filmId/cast">
+          <Cast />
+        </Route>
 
-      <Route path="/movies/:filmId/reviews">
-        <Reviews />
-      </Route>
+        <Route path="/movies/:filmId/reviews">
+          <Reviews />
+        </Route>
+      </Suspense>
     </>
   ) : (
     <Spinner />

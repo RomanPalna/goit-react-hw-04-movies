@@ -13,8 +13,6 @@ export default function Reviews() {
     fetchMovieDetails(filmId).then(setRewievs);
   }, [filmId]);
 
-  console.log(rewievs);
-
   return rewievs ? (
     <ul>
       {rewievs.results.map(result => (
