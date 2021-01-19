@@ -1,5 +1,12 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
-import { useParams, Route, NavLink, useRouteMatch } from 'react-router-dom';
+import {
+  useParams,
+  Route,
+  NavLink,
+  useRouteMatch,
+  useLocation,
+  useHistory,
+} from 'react-router-dom';
 import fatchFilmDetail from '../../FilmAPI/filmDetailApi';
 import Spinner from './loader';
 import s from './ViewsStyles.module.css';
@@ -13,8 +20,14 @@ export default function MovieDetailsPage() {
   const [film, setFilm] = useState(null);
 
   const { url } = useRouteMatch();
-
   const { filmId } = useParams();
+
+  const location = useLocation();
+  const history = useHistory();
+
+  const onGoBack = () => {
+    history.push(location?.state?.from ?? '/');
+  };
 
   useEffect(() => {
     fatchFilmDetail(filmId).then(setFilm);
@@ -22,6 +35,10 @@ export default function MovieDetailsPage() {
 
   return film ? (
     <>
+      <button type="button" onClick={onGoBack}>
+        BACK
+      </button>
+
       <div className={s.detailsPage}>
         <img
           className={s.detailsImg}

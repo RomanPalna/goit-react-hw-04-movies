@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Searchbar from './SearchBar';
 import fetchMovieQuery from '../../FilmAPI/filmSearchApi';
@@ -8,6 +8,7 @@ import imgNotFound from '../../images/notFound.jpg';
 export default function MoviesPage() {
   const [search, setSearch] = useState(null);
   const [films, setFilms] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
     if (!search) {
@@ -31,7 +32,13 @@ export default function MoviesPage() {
             <ul className={s.top}>
               {films.map(film => (
                 <li key={film.id} className={s.galery__item}>
-                  <Link to={`movies/${film.id}`} className={s.card__title}>
+                  <Link
+                    to={{
+                      pathname: `movies/${film.id}`,
+                      state: { from: location },
+                    }}
+                    className={s.card__title}
+                  >
                     <img
                       alt={film.title}
                       src={
